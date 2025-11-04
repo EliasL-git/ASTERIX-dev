@@ -26,6 +26,14 @@ The preview window opens with a blank tab. Enter a URL in the toolbar and press 
 
 A Docker image is provided for browser-on-the-go demos. It starts an Alpine base with Xvfb, Fluxbox, VNC, and noVNC so the full graphical shell can be exercised from any modern browser—no CLI experience required.
 
+### Using Docker Compose (recommended)
+
+```bash
+docker-compose up --build
+```
+
+### Using Docker directly
+
 ```bash
 docker build -t asterix .
 docker run -it --rm -p 8080:8080 -p 5901:5901 asterix
