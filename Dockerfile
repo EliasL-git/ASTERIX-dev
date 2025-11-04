@@ -28,9 +28,9 @@ COPY crates/asterix-ui/Cargo.toml crates/asterix-ui/Cargo.toml
 
 # Create dummy source files to cache dependencies
 RUN mkdir -p crates/asterix-core/src && \
-    echo "fn main() {}" > crates/asterix-core/src/lib.rs && \
+    echo "pub fn dummy() {}" > crates/asterix-core/src/lib.rs && \
     mkdir -p crates/asterix-browser/src && \
-    echo "fn main() {}" > crates/asterix-browser/src/lib.rs && \
+    echo "pub fn dummy() {}" > crates/asterix-browser/src/lib.rs && \
     mkdir -p crates/asterix-ui/src && \
     echo "fn main() {}" > crates/asterix-ui/src/main.rs
 
