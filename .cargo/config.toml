@@ -4,5 +4,4 @@ protocol = "sparse"
 
 # Optimize builds
 [build]
-# Use all available CPU cores
-jobs = 0
+# Use all available CPU cores (Cargo's default behavior)
