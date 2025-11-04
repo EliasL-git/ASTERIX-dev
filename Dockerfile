@@ -7,8 +7,6 @@ RUN apk add --no-cache \
         build-base \
         cmake \
         pkgconfig \
-        openssl-dev \
-        openssl-libs-static \
         libx11-dev \
         libxrandr-dev \
         libxi-dev \
