@@ -1,0 +1,8 @@
+# Use sparse registry protocol for faster dependency fetching
+[registries.crates-io]
+protocol = "sparse"
+
+# Optimize builds
+[build]
+# Use all available CPU cores
+jobs = 0

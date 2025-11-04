@@ -26,3 +26,10 @@ parking_lot = "0.12"
 chrono = { version = "0.4", features = ["serde"] }
 eframe = { version = "0.27", default-features = false, features = ["glow"] }
 scraper = "0.19"
+
+# Optimized release profile for faster builds
+[profile.release]
+# Faster linking with thin LTO
+lto = "thin"
+# Faster codegen units (at slight cost to optimization)
+codegen-units = 16
