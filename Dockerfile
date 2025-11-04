@@ -17,8 +17,35 @@ RUN apk add --no-cache \
 
 WORKDIR /workspace
 
-COPY . .
+# Copy cargo configuration for optimized builds
+COPY .cargo .cargo
 
+# Copy only dependency manifests first for better layer caching
+COPY Cargo.toml Cargo.toml
+COPY crates/asterix-core/Cargo.toml crates/asterix-core/Cargo.toml
+COPY crates/asterix-browser/Cargo.toml crates/asterix-browser/Cargo.toml
+COPY crates/asterix-ui/Cargo.toml crates/asterix-ui/Cargo.toml
+
+# Create dummy source files to cache dependencies
+RUN mkdir -p crates/asterix-core/src && \
+    echo "fn main() {}" > crates/asterix-core/src/lib.rs && \
+    mkdir -p crates/asterix-browser/src && \
+    echo "fn main() {}" > crates/asterix-browser/src/lib.rs && \
+    mkdir -p crates/asterix-ui/src && \
+    echo "fn main() {}" > crates/asterix-ui/src/main.rs
+
+# Build dependencies only - this layer will be cached unless Cargo.toml changes
+RUN cargo build --release -p asterix-ui
+
+# Now copy the actual source code
+COPY crates crates
+
+# Touch files to trigger rebuild of actual source (not dependencies)
+RUN touch crates/asterix-core/src/lib.rs && \
+    touch crates/asterix-browser/src/lib.rs && \
+    touch crates/asterix-ui/src/main.rs
+
+# Build the actual application (dependencies are already cached)
 RUN cargo build --release -p asterix-ui
 
 FROM alpine:3.20

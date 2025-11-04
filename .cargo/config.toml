@@ -1,0 +1,15 @@
+# Use sparse registry protocol for faster dependency fetching
+[registries.crates-io]
+protocol = "sparse"
+
+# Optimize builds
+[build]
+# Use all available CPU cores
+jobs = 0
+
+# Link-time optimization settings
+[profile.release]
+# Faster linking
+lto = "thin"
+# Faster codegen units (at slight cost to optimization)
+codegen-units = 16
