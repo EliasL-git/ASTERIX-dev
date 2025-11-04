@@ -1,0 +1,19 @@
+[package]
+name = "asterix-core"
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+description = "Core runtime primitives for the ASTERIX browser"
+
+[dependencies]
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+url = { workspace = true }
+reqwest = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+parking_lot = { workspace = true }
+chrono = { workspace = true }
+scraper = { workspace = true }

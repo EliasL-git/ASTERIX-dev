@@ -1,0 +1,22 @@
+# Rust build artifacts
+/target/
+**/target/
+Cargo.lock
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Docker volumes and runtime
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+
+# OS files
+Thumbs.db

@@ -1,0 +1,28 @@
+[workspace]
+members = [
+    "crates/asterix-core",
+    "crates/asterix-browser",
+    "crates/asterix-ui",
+]
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+version = "0.1.0"
+authors = ["ASTERIX Contributors"]
+license = "Apache-2.0"
+
+[workspace.dependencies]
+anyhow = "1"
+thiserror = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["fmt", "env-filter", "ansi"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+url = "2"
+reqwest = { version = "0.11", features = ["json", "brotli", "gzip", "cookies", "rustls-tls"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync", "time"] }
+parking_lot = "0.12"
+chrono = { version = "0.4", features = ["serde"] }
+eframe = { version = "0.27", default-features = false, features = ["glow"] }
+scraper = "0.19"

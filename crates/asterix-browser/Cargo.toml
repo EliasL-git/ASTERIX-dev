@@ -1,0 +1,17 @@
+[package]
+name = "asterix-browser"
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+description = "Browser orchestration layer tying together core services and UI"
+
+[dependencies]
+anyhow = { workspace = true }
+asterix-core = { path = "../asterix-core" }
+tokio = { workspace = true }
+tracing = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+parking_lot = { workspace = true }
+thiserror = { workspace = true }
+url = { workspace = true }
